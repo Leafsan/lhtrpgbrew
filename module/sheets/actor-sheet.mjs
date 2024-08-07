@@ -1,12 +1,14 @@
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
-import {onManageTags} from "../helpers/tags.mjs";
+import {
+  onManageActiveEffect,
+  prepareActiveEffectCategories,
+} from "../helpers/effects.mjs";
+import { onManageTags } from "../helpers/tags.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
 export class LHTrpgActorSheet extends ActorSheet {
-
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -14,12 +16,32 @@ export class LHTrpgActorSheet extends ActorSheet {
       template: "systems/lhtrpg/templates/actor/actor-sheet.html",
       width: 700,
       height: 700,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" },
-      { navSelector: ".status-tabs", contentSelector: ".status-body", initial: "status" },
-      { navSelector: ".skills-tabs", contentSelector: ".skills-body", initial: "basic" },
-      { navSelector: ".bio-tabs", contentSelector: ".bio-body", initial: "bio" }],
-      dragDrop: [{dragSelector: ".items-list .item", dropSelector: null},
-      {dragSelector: ".inventory-list .item", dropSelector: null}]
+      tabs: [
+        {
+          navSelector: ".sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "stats",
+        },
+        {
+          navSelector: ".status-tabs",
+          contentSelector: ".status-body",
+          initial: "status",
+        },
+        {
+          navSelector: ".skills-tabs",
+          contentSelector: ".skills-body",
+          initial: "basic",
+        },
+        {
+          navSelector: ".bio-tabs",
+          contentSelector: ".bio-body",
+          initial: "bio",
+        },
+      ],
+      dragDrop: [
+        { dragSelector: ".items-list .item", dropSelector: null },
+        { dragSelector: ".inventory-list .item", dropSelector: null },
+      ],
     });
   }
 
@@ -42,11 +64,12 @@ export class LHTrpgActorSheet extends ActorSheet {
     const actorData = this.actor.toObject(false);
 
     // Add the actor's data to context.data for easier access, as well as flags.
+    context.config = CONFIG.LHTRPG;
     context.system = actorData.system;
     context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
+    if (actorData.type == "character") {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
@@ -56,7 +79,9 @@ export class LHTrpgActorSheet extends ActorSheet {
 
     // Enrich textarea content
     context.enrichments = {
-      "biography": await TextEditor.enrichHTML(context.system.biography, {async: true})
+      biography: await TextEditor.enrichHTML(context.system.biography, {
+        async: true,
+      }),
     };
 
     // Prepare active effects
@@ -72,10 +97,7 @@ export class LHTrpgActorSheet extends ActorSheet {
    *
    * @return {undefined}
    */
-  _prepareCharacterData(context) {
-
-
-  }
+  _prepareCharacterData(context) {}
 
   /**
    * Organize and classify Items for Character sheets.
@@ -110,98 +132,93 @@ export class LHTrpgActorSheet extends ActorSheet {
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to Combat Skills.
-      if (i.type === 'skill' && i.system.subtype === 'Combat') {
+      if (i.type === "skill" && i.system.subtype === "Combat") {
         skillsCombat.push(i);
       }
       // Append to Basic Skills.
-      else if (i.type === 'skill' && i.system.subtype === 'Basic') {
+      else if (i.type === "skill" && i.system.subtype === "Basic") {
         skillsBasic.push(i);
       }
       // Append to General Skills.
-      else if (i.type === 'skill' && i.system.subtype === 'General') {
+      else if (i.type === "skill" && i.system.subtype === "General") {
         skillsGeneral.push(i);
       }
       // Append to Equipped gear.
-      else if (i.system.equipped === true && i.type === 'weapon') {
+      else if (i.system.equipped === true && i.type === "weapon") {
         itemsEquippedWeapon.push(i);
-      }
-      else if (i.system.equipped === true && i.type === 'armor') {
+      } else if (i.system.equipped === true && i.type === "armor") {
         itemsEquippedArmor.push(i);
-      }
-      else if (i.system.equipped === true && i.type === 'shield') {
+      } else if (i.system.equipped === true && i.type === "shield") {
         itemsEquippedShield.push(i);
-      }
-      else if (i.system.equipped === true && i.type === 'accessory') {
+      } else if (i.system.equipped === true && i.type === "accessory") {
         itemsEquippedAccessory.push(i);
-      }
-      else if (i.system.equipped === true && i.type === 'bag') {
+      } else if (i.system.equipped === true && i.type === "bag") {
         itemsEquippedBag.push(i);
-      }
-      else if (i.system.equipped === true && i.type === 'gear') {
+      } else if (i.system.equipped === true && i.type === "gear") {
         itemsEquippedGear.push(i);
       }
       // Append to Weapons.
-      else if (i.system.equipped === false && i.type === 'weapon') {
+      else if (i.system.equipped === false && i.type === "weapon") {
         itemsWeapon.push(i);
       }
       // Append to Armors.
-      else if (i.system.equipped === false && i.type === 'armor') {
+      else if (i.system.equipped === false && i.type === "armor") {
         itemsArmor.push(i);
       }
       // Append to Shields.
-      else if (i.system.equipped === false && i.type === 'shield') {
+      else if (i.system.equipped === false && i.type === "shield") {
         itemsShield.push(i);
       }
       // Append to Accessories.
-      else if (i.system.equipped === false && i.type === 'accessory') {
+      else if (i.system.equipped === false && i.type === "accessory") {
         itemsAccessory.push(i);
       }
       // Append to Bags.
-      else if (i.system.equipped === false && i.type === 'bag') {
+      else if (i.system.equipped === false && i.type === "bag") {
         itemsBag.push(i);
       }
       // Append to Gear.
-      else if (i.system.equipped === false && i.type === 'gear') {
+      else if (i.system.equipped === false && i.type === "gear") {
         itemsGear.push(i);
       }
       // Append to Connections.
-      else if (i.type === 'connection') {
+      else if (i.type === "connection") {
         itemsConnection.push(i);
       }
       // Append to Unions.
-      else if (i.type === 'union') {
+      else if (i.type === "union") {
         itemsUnion.push(i);
       }
     }
 
     // Assign and return
     context.skills = {
-      "combat": skillsCombat,
-      "basic": skillsBasic,
-      "general": skillsGeneral
+      combat: skillsCombat,
+      basic: skillsBasic,
+      general: skillsGeneral,
     };
 
     context.items = {
-      "equipped": {
-        "weapons": itemsEquippedWeapon,
-        "armors": itemsEquippedArmor,
-        "shields": itemsEquippedShield,
-        "accessories": itemsEquippedAccessory,
-        "bags": itemsEquippedBag,
-        "gear": itemsEquippedGear
+      equipped: {
+        weapons: itemsEquippedWeapon,
+        armors: itemsEquippedArmor,
+        shields: itemsEquippedShield,
+        accessories: itemsEquippedAccessory,
+        bags: itemsEquippedBag,
+        gear: itemsEquippedGear,
       },
-      "weapons": itemsWeapon,
-      "armors": itemsArmor,
-      "shields": itemsShield,
-      "accessories": itemsAccessory,
-      "bags": itemsBag,
-      "gear": itemsGear,
-    }
+      weapons: itemsWeapon,
+      armors: itemsArmor,
+      shields: itemsShield,
+      accessories: itemsAccessory,
+      bags: itemsBag,
+      gear: itemsGear,
+    };
 
     context.social = {
-      "connections": itemsConnection,
-      "unions": itemsUnion
-    }
+      connections: itemsConnection,
+      unions: itemsUnion,
+    };
   }
 
   /* -------------------------------------------- */
@@ -211,56 +228,52 @@ export class LHTrpgActorSheet extends ActorSheet {
     super.activateListeners(html);
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.find('.item-edit').click(ev => {
+    html.find(".item-edit").click((ev) => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
     });
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.find('.addItem a.item-controls').click(ev => {
-      $('.addItem .dropdown-content').toggleClass('show');
+    html.find(".addItem a.item-controls").click((ev) => {
+      $(".addItem .dropdown-content").toggleClass("show");
     });
 
-    html.find('#hate-button').click(ev => {
+    html.find("#hate-button").click((ev) => {
       let content = ev.target.nextElementSibling;
       ev.target.classList.toggle("active");
 
-      if (content.style.transform === "perspective(400px) rotateY(-30deg)"){
+      if (content.style.transform === "perspective(400px) rotateY(-30deg)") {
         content.style.transform = "perspective(400px) rotateY(-90deg)";
         // this._onOpeningInfoWindow(false, this.actor);
       } else {
-        content.style.transform = "perspective(400px) rotateY(-30deg)";    
+        content.style.transform = "perspective(400px) rotateY(-30deg)";
         // this._onOpeningInfoWindow(true, this.actor);
       }
-
     });
 
     // Roll skill
-    html.find('.rollableSkill').click(this._onRollSkill.bind(this));
-    
+    html.find(".rollableSkill").click(this._onRollSkill.bind(this));
 
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
     // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate.bind(this));
+    html.find(".item-create").click(this._onItemCreate.bind(this));
 
     // Delete Inventory Item
-    html.find('.item-equip').click(ev => {
+    html.find(".item-equip").click((ev) => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       let equipped = item.system.equipped;
       equipped = !equipped;
-      item.update(
-        { 'system.equipped': equipped}
-      )
+      item.update({ "system.equipped": equipped });
       li.slideUp(200, () => this.render(false));
     });
 
     // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
+    html.find(".item-delete").click((ev) => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
@@ -268,18 +281,20 @@ export class LHTrpgActorSheet extends ActorSheet {
     });
 
     // Active Effect management
-    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
+    html
+      .find(".effect-control")
+      .click((ev) => onManageActiveEffect(ev, this.actor));
 
     // Tag management
-    html.find(".tag-control").click(ev => onManageTags(ev, this.actor));
+    html.find(".tag-control").click((ev) => onManageTags(ev, this.actor));
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
+    html.find(".rollable").click(this._onRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.owner) {
-      let handler = ev => this._onDragStart(ev);
-      html.find('li.item').each((i, li) => {
+      let handler = (ev) => this._onDragStart(ev);
+      html.find("li.item").each((i, li) => {
         if (li.classList.contains("inventory-header")) return;
         li.setAttribute("draggable", true);
         li.addEventListener("dragstart", handler, false);
@@ -306,7 +321,7 @@ export class LHTrpgActorSheet extends ActorSheet {
     const itemData = {
       name: name,
       type: type,
-      data: data
+      data: data,
     };
 
     console.log(itemData);
@@ -314,7 +329,7 @@ export class LHTrpgActorSheet extends ActorSheet {
     delete itemData.data["type"];
 
     // Finally, create the item!
-    return await Item.create(itemData, {parent: this.actor});
+    return await Item.create(itemData, { parent: this.actor });
   }
 
   /**
@@ -329,8 +344,8 @@ export class LHTrpgActorSheet extends ActorSheet {
 
     // Handle item rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
+      if (dataset.rollType == "item") {
+        const itemId = element.closest(".item").dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
       }
@@ -338,82 +353,81 @@ export class LHTrpgActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[roll] ${dataset.label}` : '';
+      let label = dataset.label ? `[roll] ${dataset.label}` : "";
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
+        rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
     }
   }
 
   async _onRollSkill(event) {
-
     const element = event.currentTarget;
     const dataset = element.dataset;
     const dice = dataset.dice;
     const bonus = dataset.bonus;
     const skillName = dataset.name;
     console.log(dataset);
-    const rendered_dialog = await renderTemplate("systems/lhtrpg/templates/dialogs/rollDialog.html");
+    const rendered_dialog = await renderTemplate(
+      "systems/lhtrpg/templates/dialogs/rollDialog.html"
+    );
     const checkName = `LHTRPG.Check.${skillName}`;
     let mod;
 
     let d = new Dialog({
-      title: `${game.i18n.localize("LHTRPG.WindowTitle.AbilityCheck")} - ${game.i18n.localize(checkName)}`,
+      title: `${game.i18n.localize(
+        "LHTRPG.WindowTitle.AbilityCheck"
+      )} - ${game.i18n.localize(checkName)}`,
       content: rendered_dialog,
       buttons: {
         roll: {
           icon: '<i class="fas fa-dice"></i>',
           label: game.i18n.localize("LHTRPG.ButtonLabel.Roll"),
-          callback: html => {
-            mod = html.find('.abilityCheckMod').val();
+          callback: (html) => {
+            mod = html.find(".abilityCheckMod").val();
             this.rollSkill(skillName, dice, bonus, mod);
-          }
+          },
         },
         cancel: {
           icon: '<i class="fas fa-times"></i>',
           label: game.i18n.localize("LHTRPG.ButtonLabel.Cancel"),
-        }
+        },
       },
-      default: "cancel"
+      default: "cancel",
     });
     d.render(true);
-
   }
 
   rollSkill(skillName, dice, bonus, mod) {
-
     const checkName = `LHTRPG.Check.${skillName}`;
-    const flavorText = `${game.i18n.localize("LHTRPG.WindowTitle.AbilityCheck")} - ${game.i18n.localize(checkName)}`;
+    const flavorText = `${game.i18n.localize(
+      "LHTRPG.WindowTitle.AbilityCheck"
+    )} - ${game.i18n.localize(checkName)}`;
     let roll;
     let formula;
 
-    if(mod === undefined || mod == 0) {
+    if (mod === undefined || mod == 0) {
       formula = `${dice}d6+${bonus}`;
-    }
-    else if (mod > 0) {
+    } else if (mod > 0) {
       formula = `${dice}d6+${bonus}+${mod}`;
-    }
-    else {
+    } else {
       formula = `${dice}d6+${bonus}-${Math.abs(mod)}`;
     }
 
     console.log(formula);
-
 
     roll = new Roll(formula);
 
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       flavor: flavorText,
-      rollMode: game.settings.get('core', 'rollMode'),
+      rollMode: game.settings.get("core", "rollMode"),
     });
 
     return roll;
-
   }
 
   // async _onOpeningInfoWindow (state, actor) {
@@ -421,5 +435,4 @@ export class LHTrpgActorSheet extends ActorSheet {
   //   console.log(actor);
   //   await actor.setFlag("lhtrpg", "hfWindowOpened", state);
   // }
-
 }

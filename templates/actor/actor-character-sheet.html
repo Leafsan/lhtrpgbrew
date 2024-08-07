@@ -40,7 +40,7 @@
 				<select name="system.race">
 					{{#select system.race}}
 					{{#each config.races as |label race|}}
-						<option value="{{race}}">{{label}}</option>
+						<option value="{{race}}">{{localize label}}</option>
 					{{/each}}
 					{{/select}}
 				</select>
@@ -56,10 +56,10 @@
 				<input class="subclassrank" type="text" name="system.class.subclassrank"
 					value="{{system.class.subclassrank}}"
 					placeholder="1" data-dtype="Number">
-				<select class="class">
+				<select class="class" name="system.class.name">
 					{{#select system.class.name}}
 					{{#each config.classes as |label class|}}
-						<option value="{{class}}">{{label}}</option>
+						<option value="{{class}}">{{localize label}}</option>
 					{{/each}}
 					{{/select}}
 				</select>

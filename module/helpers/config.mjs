@@ -11,6 +11,24 @@ LHTRPG.races = {
   foxTail: "LHTRPG.Races.foxTail",
 };
 
+LHTRPG.classes = {
+  none: "LHTRPG.Classes.none",
+  guardian: "LHTRPG.Classes.guardian",
+  samurai: "LHTRPG.Classes.samurai",
+  monk: "LHTRPG.Classes.monk",
+  hwarang: "LHTRPG.Classes.hwarang",
+  cleric: "LHTRPG.Classes.cleric",
+  druid: "LHTRPG.Classes.druid",
+  kannagi: "LHTRPG.Classes.kannagi",
+  templar: "LHTRPG.Classes.templar",
+  assassin: "LHTRPG.Classes.assassin",
+  swashbuckler: "LHTRPG.Classes.swashbuckler",
+  bard: "LHTRPG.Classes.bard",
+  sorcerer: "LHTRPG.Classes.sorcerer",
+  summoner: "LHTRPG.Classes.summoner",
+  enchanter: "LHTRPG.Classes.enchanter",
+};
+
 LHTRPG.ASCII = `
               _-o#&&*''''?d:>b\_
           _o/"'''  '',, dMF9MMMMMHo_

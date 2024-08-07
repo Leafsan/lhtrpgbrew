@@ -65,6 +65,23 @@
       "Perception": "지각치",
       "Resistance": "저항치"
     },
+    "Classes": {
+      "none": "직업 선택",
+      "guardian": "가디언",
+      "samurai": "사무라이",
+      "monk": "몽크",
+      "hwarang": "화랑",
+      "cleric": "클레릭",
+      "druid": "드루이드",
+      "kannagi": "칸나기",
+      "templar": "템플러",
+      "assassin": "어새신",
+      "swashbuckler": "스워시버클러",
+      "bard": "바드",
+      "sorcerer": "소서러",
+      "summoner": "서머너",
+      "enchanter": "인챈터"
+    },
     "Connection": {
       "Label": "커넥션",
       "Name": "이름"
