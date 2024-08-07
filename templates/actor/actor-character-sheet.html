@@ -38,14 +38,11 @@
 			<div class="race">
 				<label for="system.race">{{localize 'LHTRPG.Label.Race'}}</label>
 				<select name="system.race">
-					<option disabled hidden selected value="none">선택</option>
-					<option value="human">인간</option>
-					<option value="elf">엘프</option>
-					<option value="dwarf">드워프</option>
-					<option value="half-alv">하프알브</option>
-					<option value="felinoid">묘인족</option>
-					<option value="wolf-fang">낭아족</option>
-					<option value="fox-tail">호미족</option>
+					{{#select system.race}}
+					{{#each config.races as |label race|}}
+						<option value="{{race}}">{{label}}</option>
+					{{/each}}
+					{{/select}}
 				</select>
 				<!-- <input type="text" name="system.race" value="{{system.race}}"
 					placeholder="{{localize 'LHTRPG.Placeholder.Race'}}"> -->
@@ -59,22 +56,12 @@
 				<input class="subclassrank" type="text" name="system.class.subclassrank"
 					value="{{system.class.subclassrank}}"
 					placeholder="1" data-dtype="Number">
-				<select class="class" name="system.class.name" value="{{system.class.name}}">
-					<option disabled hidden selected value="none">선택</option>
-					<option value="guardian">가디언</option>
-					<option value="samurai">사무라이</option>
-					<option value="monk">몽크</option>
-					<option value="hwarang">화랑</option>
-					<option value="cleric">클레릭</option>
-					<option value="druid">드루이드</option>
-					<option value="kannagi">칸나기</option>
-					<option value="templar">템플러</option>
-					<option value="assassin">어새신</option>
-					<option value="swashbuckler">스워시버클러</option>
-					<option value="bard">바드</option>
-					<option value="sorcerer">소서러</option>
-					<option value="summoner">서머너</option>
-					<option value="enchanter">엔챈터</option>
+				<select class="class">
+					{{#select system.class.name}}
+					{{#each config.classes as |label class|}}
+						<option value="{{class}}">{{label}}</option>
+					{{/each}}
+					{{/select}}
 				</select>
 				<!-- <input class="class" type="text" name="system.class.name" value="{{system.class.name}}"
 					placeholder="{{localize 'LHTRPG.Placeholder.Class'}}"> -->

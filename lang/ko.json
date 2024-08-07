@@ -149,6 +149,16 @@
       "SubClass": "서브직업"
     },
     "Pre": "PRE",
+    "Races": {
+      "none": "종족 선택",
+      "human": "휴먼",
+      "elf": "엘프",
+      "dwarf": "드워프",
+      "halfAlv": "하프알브",
+      "felinoid": "묘인족",
+      "wolfFang": "낭아족",
+      "foxTail": "호미족"
+    },
     "Skill": {
       "Label": {
         "Check": "판정",

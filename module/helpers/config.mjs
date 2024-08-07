@@ -1,5 +1,15 @@
 export const LHTRPG = {};
 
+LHTRPG.races = {
+  none: "LHTRPG.Races.none",
+  human: "LHTRPG.Races.human",
+  elf: "LHTRPG.Races.elf",
+  dwarf: "LHTRPG.Races.dwarf",
+  halfAlv: "LHTRPG.Races.halfAlv",
+  felinoid: "LHTRPG.Races.felinoid",
+  wolfFang: "LHTRPG.Races.wolfFang",
+  foxTail: "LHTRPG.Races.foxTail",
+};
 
 LHTRPG.ASCII = `
               _-o#&&*''''?d:>b\_
