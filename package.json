@@ -1,7 +1,7 @@
 {
-  "name": "lhtrpg",
+  "name": "lhtrpgbrew",
   "version": "1.0.0",
-  "description": "CSS compiler for the Log Horizon TRPG system",
+  "description": "CSS compiler for the Log Horizon TRPG Homebrew system",
   "scripts": {
     "build": "gulp build",
     "compile": "gulp css",

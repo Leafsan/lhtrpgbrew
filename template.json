@@ -1,12 +1,13 @@
 {
   "Actor": {
-    "types": [
-      "character",
-      "monster"
-    ],
+    "types": ["character", "monster"],
     "templates": {
       "base": {
         "health": {
+          "value": 0,
+          "max": 0
+        },
+        "mana": {
           "value": 0,
           "max": 0
         },
@@ -20,7 +21,25 @@
       },
       "attributes": {
         "attributes": {
+          "phy": {
+            "value": 0
+          },
+          "agi": {
+            "value": 0
+          },
+          "wil": {
+            "value": 0
+          },
+          "int": {
+            "value": 0
+          }
+        },
+        "derived-attributes": {
           "str": {
+            "value": 0,
+            "mod": 0
+          },
+          "end": {
             "value": 0,
             "mod": 0
           },
@@ -28,11 +47,23 @@
             "value": 0,
             "mod": 0
           },
-          "pow": {
+          "qik": {
             "value": 0,
             "mod": 0
           },
-          "int": {
+          "min": {
+            "value": 0,
+            "mod": 0
+          },
+          "pre": {
+            "value": 0,
+            "mod": 0
+          },
+          "dis": {
+            "value": 0,
+            "mod": 0
+          },
+          "wis": {
             "value": 0,
             "mod": 0
           }
@@ -80,47 +111,36 @@
       "checks": {
         "checks": {
           "athletics": {
-            "dice": 2,
             "mod": 0
           },
           "endurance": {
-            "dice": 2,
             "mod": 0
           },
           "disable": {
-            "dice": 2,
             "mod": 0
           },
           "operation": {
-            "dice": 2,
             "mod": 0
           },
           "perception": {
-            "dice": 2,
             "mod": 0
           },
           "negotiation": {
-            "dice": 2,
             "mod": 0
           },
           "knowledge": {
-            "dice": 2,
             "mod": 0
           },
           "analysis": {
-            "dice": 2,
             "mod": 0
           },
           "accuracy": {
-            "dice": 2,
             "mod": 0
           },
           "evasion": {
-            "dice": 2,
             "mod": 0
           },
           "resistance": {
-            "dice": 2,
             "mod": 0
           }
         }
@@ -143,6 +163,7 @@
         "crank": 1,
         "hate": 0,
         "fatigue": 0,
+        "stress": 0,
         "level": 35
       },
       "social": {
@@ -153,11 +174,7 @@
       }
     },
     "monster": {
-      "templates": [
-        "base",
-        "attributes",
-        "bad-status"
-      ],
+      "templates": ["base", "attributes", "bad-status"],
       "battle-status": {
         "defense": {
           "phys": 0,
@@ -212,10 +229,7 @@
       }
     },
     "skill": {
-      "templates": [
-        "base",
-        "infos"
-      ],
+      "templates": ["base", "infos"],
       "subtype": "Basic",
       "skillRank": {
         "value": 1,
@@ -225,11 +239,7 @@
       "limit": ""
     },
     "weapon": {
-      "templates": [
-        "base",
-        "init",
-        "itemBase"
-      ],
+      "templates": ["base", "init", "itemBase"],
       "attack": 0,
       "magic": 0,
       "accuracy": 0,
@@ -237,53 +247,28 @@
       "range": ""
     },
     "armor": {
-      "templates": [
-        "base",
-        "defenses",
-        "init",
-        "itemBase"
-      ]
+      "templates": ["base", "defenses", "init", "itemBase"]
     },
     "shield": {
-      "templates": [
-        "base",
-        "defenses",
-        "itemBase"
-      ]
+      "templates": ["base", "defenses", "itemBase"]
     },
     "accessory": {
-      "templates": [
-        "base",
-        "defenses",
-        "itemBase",
-        "init"
-      ],
+      "templates": ["base", "defenses", "itemBase", "init"],
       "magic": 0
     },
     "bag": {
-      "templates": [
-        "base",
-        "itemBase"
-      ],
+      "templates": ["base", "itemBase"],
       "bagSpace": 0,
       "limit": ""
     },
     "gear": {
-      "templates": [
-        "base",
-        "itemBase",
-        "infos"
-      ]
+      "templates": ["base", "itemBase", "infos"]
     },
     "connection": {
-      "templates": [
-        "base"
-      ]
+      "templates": ["base"]
     },
     "union": {
-      "templates": [
-        "base"
-      ]
+      "templates": ["base"]
     }
   }
 }
