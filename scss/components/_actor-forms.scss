@@ -267,12 +267,14 @@ section.window-content {
         // text-shadow: 0 0 2px $lhtrpg-font-color-ui;
       }
 
-      input {
+      select {
         font-size: 30px;
         height: 45px;
         flex-basis: 200px;
         flex-grow: 1;
         text-align: left;
+        border: none;
+        color: $lhtrpg-font-color-primary;
       }
     }
 
