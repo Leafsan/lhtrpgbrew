@@ -23,7 +23,7 @@
       "Skills": "API 불러오기 - 공식 웹사이트의 스킬 API를 불러오는 중입니다...",
       "SkillsDone": "API 불러오기 - 스킬 정보 불러오기 완료!"
     }
-  },
+  },    
   "Actor": {
     "TypeCharacter": "플레이어 캐릭터",
     "TypeMonster": "몬스터"
@@ -41,7 +41,6 @@
   },
   "LHTRPG": {
     "Add": "추가",
-    "Agi": "AGI",
     "Biography": {
       "Label": "설명"
     },
@@ -73,7 +72,6 @@
       "Label": "설명"
     },
     "Dex": "DEX",
-    "Dis": "DIS",
     "Effect": {
       "Label": "효과"
     },
@@ -81,7 +79,6 @@
     "EffectDelete": "효과 삭제",
     "EffectEdit": "효과 편집",
     "EffectToggle": "효과 전환",
-    "End": "END",
     "Int": "INT",
     "Item": {
       "Label": {
@@ -104,11 +101,11 @@
       }
     },
     "Label": {
-      "Afflicted": "위중",
+      "Afflicted": "위독",
       "Barrier": "방벽",
       "Cancel": "취소",
       "Confused": "혼란",
-      "Dazed": "멍함",
+      "Dazed": "방심",
       "Decay": "쇠약",
       "Defense": "방어력",
       "Fate": "인과력",
@@ -125,11 +122,9 @@
       "Regen": "재생",
       "Rigor": "경직",
       "Staggered": "위축",
-      "Stress": "긴장",
       "Tags": "태그",
       "Type": "종류"
     },
-    "Min": "MIN",
     "Modifier": "수정치",
     "Monster": {
       "HateMultiplier": "헤이트 배율",
@@ -141,14 +136,13 @@
       "Skills": "특기",
       "Speed": "이동력"
     },
-    "Phy": "PHY",
     "Placeholder": {
       "Class": "메인직업",
       "Name": "이름",
       "Race": "종족",
       "SubClass": "서브직업"
     },
-    "Pre": "PRE",
+    "Pow": "POW",
     "Skill": {
       "Label": {
         "Check": "판정",
@@ -191,8 +185,6 @@
       "Label": "유니온",
       "Name": "유니온명"
     },
-    "Wil": "WIL",
-    "Wis": "WIS",
     "WindowTitle": {
       "AbilityCheck": "능력치 판정",
       "Tag": {

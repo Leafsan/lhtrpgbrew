@@ -1,5 +1,5 @@
 {
-  "name": "lhtrpghomebrew",
+  "name": "lhtrpg",
   "version": "1.0.0",
   "description": "CSS compiler for the Log Horizon TRPG system",
   "scripts": {
@@ -15,12 +15,11 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "gulp": "^5.0.0",
-    "gulp-autoprefixer": "^9",
-    "gulp-sass": "^5",
-    "gulp-sourcemaps": "^3",
-    "sass": "^1.77.8"
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8",
+    "gulp-sass": "^4",
+    "gulp-sourcemaps": "^3"
   }
 }

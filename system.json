@@ -1,8 +1,8 @@
 {
-  "id": "lhtrpghomebrew",
-  "title": "Log Horizon TRPG (ログ・ホライズンTRPG) - Homebrew",
-  "description": "A system for playing Log Horizon TRPG Homebrew. <em>Database Database Just living in the Database</em>",
-  "version": "1.0.0",
+  "id": "lhtrpg",
+  "title": "Log Horizon TRPG (ログ・ホライズンTRPG)",
+  "description": "A system for playing Log Horizon TRPG. <em>Database Database Just living in the Database</em>",
+  "version": "1.3.0",
   "compatibility": {
     "minimum": 11,
     "verified": 11
@@ -12,10 +12,6 @@
       "name": "Kyane",
       "url": "https://github.com/Tenyryas",
       "discord": "Kyane#8654"
-    },
-    {
-      "name": "LeafSan",
-      "url": "https://github.com/LeafSan"
     }
   ],
   "media": [
@@ -49,9 +45,9 @@
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "mana",
-  "url": "https://github.com/LeafSan/lhtrpgbrew",
-  "manifest": "https://raw.githubusercontent.com/Leafsan/lhtrpgbrew/latest/system.json",
-  "download": "https://github.com/Tenyryas/lhtrpg/releases/download/v1.0.0/lhtrpghomebrew.zip",
+  "secondaryTokenAttribute": "fate",
+  "url": "https://github.com/Tenyryas/lhtrpg",
+  "manifest": "https://raw.githubusercontent.com/Tenyryas/lhtrpg/latest/system.json",
+  "download": "https://github.com/Tenyryas/lhtrpg/releases/download/v1.3.0/lhtrpg.zip",
   "license": "LICENSE.txt"
 }
