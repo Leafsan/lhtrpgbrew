@@ -157,7 +157,8 @@
       "class": {
         "img": "systems/lhtrpg/assets/ui/classes/Enchanter_Logo.png",
         "name": "",
-        "subclass": ""
+        "subclass": "",
+        "subclassrank": 1
       },
       "infos": {
         "crank": 1,
