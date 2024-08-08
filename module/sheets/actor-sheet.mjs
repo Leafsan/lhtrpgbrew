@@ -367,15 +367,16 @@ export class LHTrpgActorSheet extends ActorSheet {
   async _onRollSkill(event) {
     const element = event.currentTarget;
     const dataset = element.dataset;
-    const dice = dataset.dice;
-    const bonus = dataset.bonus;
+    const rank = dataset.rank;
+    const total = dataset.total;
     const skillName = dataset.name;
     console.log(dataset);
     const rendered_dialog = await renderTemplate(
       "systems/lhtrpg/templates/dialogs/rollDialog.html"
     );
     const checkName = `LHTRPG.Check.${skillName}`;
-    let mod;
+    let dice;
+    let difficulty;
 
     let d = new Dialog({
       title: `${game.i18n.localize(
@@ -387,8 +388,9 @@ export class LHTrpgActorSheet extends ActorSheet {
           icon: '<i class="fas fa-dice"></i>',
           label: game.i18n.localize("LHTRPG.ButtonLabel.Roll"),
           callback: (html) => {
-            mod = html.find(".abilityCheckMod").val();
-            this.rollSkill(skillName, dice, bonus, mod);
+            dice = html.find(".abilityCheckDice").val();
+            difficulty = html.find(".abilityCheckDifficulty").val();
+            this.rollSkill(skillName, dice, total, difficulty, rank);
           },
         },
         cancel: {
@@ -401,31 +403,39 @@ export class LHTrpgActorSheet extends ActorSheet {
     d.render(true);
   }
 
-  rollSkill(skillName, dice, bonus, mod) {
+  async rollSkill(skillName, dice, total, difficulty, rank) {
     const checkName = `LHTRPG.Check.${skillName}`;
     const flavorText = `${game.i18n.localize(
       "LHTRPG.WindowTitle.AbilityCheck"
     )} - ${game.i18n.localize(checkName)}`;
-    let roll;
     let formula;
 
-    if (mod === undefined || mod == 0) {
-      formula = `${dice}d6+${bonus}`;
-    } else if (mod > 0) {
-      formula = `${dice}d6+${bonus}+${mod}`;
+    if (dice === undefined || dice == 0) {
+      formula = `1d20`;
+    } else if (dice > 0) {
+      dice = Number(dice) + 1;
+      formula = `${dice}d20k1`;
     } else {
-      formula = `${dice}d6+${bonus}-${Math.abs(mod)}`;
+      dice = Math.abs(dice) + 1;
+      formula = `${dice}d20kl1`;
     }
 
     console.log(formula);
 
-    roll = new Roll(formula);
+    let roll = await new Roll(formula).evaluate();
+    let difficultyResult = difficulty + rank;
 
-    roll.toMessage({
+    let content = `<h2>${flavorText}</h2><h3 style="text-align:center">주사위 결과 vs 난이도</h3><div style="text-align:center; font-size: 20px;">${roll.total} vs ${total}</div>`;
+    ChatMessage.create({
+      content: content,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      flavor: flavorText,
-      rollMode: game.settings.get("core", "rollMode"),
     });
+
+    // roll.toMessage({
+    //   speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //   flavor: flavorText,
+    //   rollMode: game.settings.get("core", "rollMode"),
+    // });
 
     return roll;
   }

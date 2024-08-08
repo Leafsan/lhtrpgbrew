@@ -53,17 +53,20 @@
       }
     },
     "Check": {
-      "Accuracy": "명중치",
+      "Accuracy": "명중판정",
       "Analysis": "분석치",
       "Athletics": "운동치",
       "Disable": "해제치",
+      "Dodge": "회피판정",
       "Endurance": "내구치",
       "Evasion": "회피치",
       "Knowledge": "지식치",
+      "MagicAccuracy": "마법판정",
       "Negotiation": "교섭치",
       "Operation": "조작치",
+      "Overcome": "돌파치",
       "Perception": "지각치",
-      "Resistance": "저항치"
+      "Resistance": "저항판정"
     },
     "Classes": {
       "none": "직업 선택",
@@ -90,6 +93,7 @@
       "Label": "설명"
     },
     "Dex": "DEX",
+    "Difficulty": "난이도",
     "Dis": "DIS",
     "Effect": {
       "Label": "효과"
@@ -135,10 +139,12 @@
       "Hate": "헤이트",
       "ImportItems": "lhrpg.com에서 아이템 데이터 가져오기",
       "ImportSkills": "lhrpg.com에서 스킬 데이터 가져오기",
+      "MP": "MP",
       "Overconfident": "자만",
       "Power": "공격력",
       "Pursuit": "추격",
       "Race": "종족",
+      "Rank": "랭크",
       "Regen": "재생",
       "Rigor": "경직",
       "Staggered": "위축",
@@ -158,6 +164,7 @@
       "Skills": "특기",
       "Speed": "이동력"
     },
+    "NPlusMinus": "±N",
     "Phy": "PHY",
     "Placeholder": {
       "Class": "메인직업",

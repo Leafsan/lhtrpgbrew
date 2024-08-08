@@ -182,6 +182,7 @@ section.window-content {
     max-width: 211px;
 
     .hate-window,
+    .fate-window,
     .fatigue-window,
     .stress-window {
       position: relative;
@@ -196,6 +197,7 @@ section.window-content {
       background-repeat: no-repeat;
 
       .hate-label,
+      .fate-label,
       .fatigue-label,
       .stress-label {
         text-align: center;
@@ -209,6 +211,7 @@ section.window-content {
       }
 
       .hate-input,
+      .fate-input,
       .fatigue-input,
       .stress-input {
         font-size: 32px;
@@ -268,6 +271,9 @@ section.window-content {
       }
 
       select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         font-size: 30px;
         height: 45px;
         flex-basis: 200px;
@@ -297,6 +303,9 @@ section.window-content {
       }
 
       .class {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         font-size: 35px;
         height: 50px;
         margin-left: 5px;
@@ -408,7 +417,7 @@ section.window-content {
         }
       }
 
-      div.fate {
+      div.mp {
         h4:first-child {
           background: -webkit-linear-gradient(#17d7f0, #c484da);
           -webkit-background-clip: text;
@@ -426,13 +435,13 @@ section.window-content {
           text-align: right;
         }
 
-        input[name="system.fate.max"] {
+        input[name="system.mana.max"] {
           text-align: left;
         }
       }
 
       .hp,
-      .fate {
+      .mp {
         text-align: center;
         grid-column-end: span 3;
         font-size: 25px;
@@ -443,7 +452,7 @@ section.window-content {
         }
 
         .hp-gauge,
-        .fate-gauge {
+        .mp-gauge {
           align-items: baseline;
           justify-content: center;
 
@@ -522,7 +531,7 @@ section.window-content {
       }
 
       h4.attr-name {
-        font-size: 20px;
+        font-size: 14px;
       }
 
       .grid {
@@ -534,15 +543,19 @@ section.window-content {
       .attr-inputs {
         font-family: $lhtrpg-font-secondary;
 
-        .attr-mod-input {
-          color: $lhtrpg-font-color-ui;
-          font-size: 25px;
-        }
-
         .attr-input {
-          position: relative;
-          top: -5px;
+          color: $lhtrpg-font-color-ui;
+          font-size: 14px;
         }
+        //   .attr-mod-input {
+        //     color: $lhtrpg-font-color-ui;
+        //     font-size: 25px;
+        //   }
+
+        //   .attr-input {
+        //     position: relative;
+        //     top: -5px;
+        //   }
       }
 
       .check {
